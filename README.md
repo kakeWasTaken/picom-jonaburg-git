@@ -1,6 +1,7 @@
+***This is the README from the jonaburg-picom git repo***
+
 picom
 =======
-*This is the README from the jonaburg-picom git repo*
 
 This is forked from the original Compton because it seems to have become unmaintained.
 
