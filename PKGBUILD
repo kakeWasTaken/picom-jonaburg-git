@@ -1,4 +1,4 @@
-pkgname=jonaburg-picom-git
+pkgname=picom-jonaburg-git
 _gitname=picom
 pkgver=8
 pkgrel=1
@@ -7,7 +7,7 @@ arch=(i686 x86_64)
 url="https://github.com/jonaburg/${_gitname}"
 license=('MIT' 'MPL2')
 depends=('libgl' 'libev' 'pcre' 'libx11' 'xcb-util-renderutil' 'libxcb' 'xcb-util-image' 'libxext'
-         'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme')
+         'pixman' 'libconfig' 'libdbus' 'hicolor-icon-theme' 'libxinerama')
 makedepends=('git' 'mesa' 'meson' 'asciidoc' 'uthash' 'xorgproto')
 optdepends=('dbus:          To control picom via D-Bus'
             'xorg-xwininfo: For picom-trans'
@@ -21,8 +21,8 @@ md5sums=("SKIP")
 
 pkgver() {
     cd ${_gitname}
-    _tag=$(git describe --tags | sed 's:^v::') # tag is mobile, and switches between numbers and letters, can't use it for versioning
-    _commits=$(git rev-list --count HEAD) # total commits is the most sane way of getting incremental pkgver
+    _tag=$(git describe --tags | sed 's:^v::')
+    _commits=$(git rev-list --count HEAD)
     _date=$(git log -1 --date=short --pretty=format:%cd)
     printf "%s_%s_%s\n" "${_commits}" "${_tag}" "${_date}" | sed 's/-/./g'
 }
